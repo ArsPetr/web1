@@ -1,0 +1,17 @@
+models\News.class
+services\UserService.class
+servlets\CabinetServlet.class
+servlets\LoginServlet.class
+servlets\NewsServlet.class
+models\User.class
+services\AuthenticationService.class
+servlets\MainServlet.class
+servlets\UserSessionServlet.class
+servlets\RegistrationServlet.class
+DAO\NewsDAO.class
+servlets\UsersServlet.class
+servlets\LogoutServlet.class
+servlets\NewsPostPageServlet.class
+servlets\UserListServlet.class
+Filters\AuthenticationFilter.class
+services\FileManager.class

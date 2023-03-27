@@ -1,0 +1,32 @@
+<html>
+<link rel="stylesheet" href="/static/CSS/mainStyle.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div>
+            <div class="topnav" id = "navPages">
+                <a href="/main">Home</a>
+            </div>
+            <div class="topnavRight">
+                <a href="/logout">Выйти</a>
+                <img src="" id = "avatar">
+                <a href="/main/cabinet" id = "username">USER_NAME</a>
+            </div>
+        </div>
+        <div class = "inputBox">
+            <div class = "inputForm">
+                Теги <input type="text" id = "tags"><br>
+                Заголовок <input type="text" id = "textHeader"><br>
+                Текст<br>
+                <textarea name = "mainText" cols = "120" rows = "40" id = "mainText"></textarea><br>
+                <input type = "file" id = "image" accept="image/*"><br>
+                <button id = "submit">Отправить</button>
+            </div>
+        </div>
+    </body>
+<script src="/static/JS/jquery-3.6.3.js"></script>
+<script src="/static/JS/userDisplayScript.js" charset="utf-8"></script>
+<script src="/static/JS/postScript.js" charset="utf-8"></script>
+</html>
