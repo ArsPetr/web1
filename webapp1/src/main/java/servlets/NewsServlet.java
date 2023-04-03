@@ -1,6 +1,6 @@
 package servlets;
 
-import DAO.NewsDAO;
+import services.NewsDAO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import models.News;
 import jakarta.servlet.ServletConfig;
@@ -14,7 +14,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -27,7 +26,7 @@ import java.util.UUID;
 @MultipartConfig(fileSizeThreshold = 1024 * 1024,
         maxFileSize = 1024 * 1024 * 5,
         maxRequestSize = 1024 * 1024 * 5 * 5,
-        location = "C:\\Users\\Пользователь\\IdeaProjects\\webapp1\\src\\main\\webapp\\static\\images")
+        location = "F:\\projects\\web1\\webapp1\\src\\main\\webapp\\static\\images")
 public class NewsServlet extends HttpServlet {
     private final String PIC_PATH = "/static/images/";
     @Override
@@ -72,7 +71,6 @@ public class NewsServlet extends HttpServlet {
                 news = objectMapper.readValue(body, News.class);
 
             }
-
         }
 
         news.setImage(PIC_PATH + fileName);

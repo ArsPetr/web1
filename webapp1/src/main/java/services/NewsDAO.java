@@ -1,4 +1,4 @@
-package DAO;
+package services;
 
 import models.News;
 import services.UserService;
@@ -6,16 +6,9 @@ import services.UserService;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class NewsDAO {
-
-    private static final String URL = "jdbc:mysql://localhost:3306/database";
-    private static final String NAME = "root";
-    private static final String PASSWORD = "root";
+public class NewsDAO extends BDService{
     private static final String INSERT_NEWS = "INSERT INTO news (tags, header, body, image, author) values (?,?,?,?,?)";
     private static final String SELECT_NEWS = "SELECT * FROM news";
-    private static Connection connection;
-    private static PreparedStatement preparedStatement;
-
     public NewsDAO(){}
 
     public static void insert(News news){
@@ -61,21 +54,5 @@ public class NewsDAO {
             throw new RuntimeException(e);
         }
 
-    }
-
-    private static void open(){
-        try {
-            connection = DriverManager.getConnection(URL,NAME,PASSWORD);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static void close(){
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

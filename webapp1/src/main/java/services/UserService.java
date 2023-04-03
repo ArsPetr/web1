@@ -7,26 +7,16 @@ import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class UserService {
-
-    private static final String URL = "jdbc:mysql://localhost:3306/database";
-    private static final String NAME = "root";
-    private static final String PASSWORD = "root";
-
+public class UserService extends BDService{
     private static final String INSERT_NEW = "INSERT INTO users (login, password, role) values (?,?,?)";
     private static final String SELECT_LOGIN = "SELECT login FROM users WHERE login = ?";
     private static final String SELECT_PASSWORD = "SELECT password FROM users WHERE login = ?";
     private static final String UPDATE_ROLE = "UPDATE users SET role = ? WHERE id = ?";
-
     private static final String UPDATE_PROFILE_PICTURE = "UPDATE users SET profilePic = ? WHERE login = ?";
     private static final String SELECT_ROLE = "SELECT role FROM users WHERE login = ?";
     private static final String SELECT_USER_BY_LOGIN = "SELECT * FROM users WHERE login = ?";
     private static final String SELECT_USERS = "SELECT * FROM users";
-
     public UserService(){}
-    private static Connection connection;
-    private static PreparedStatement preparedStatement;
-
     public static boolean isPresent(User user){
         open();
         try {
@@ -189,21 +179,7 @@ public class UserService {
             throw new RuntimeException(e);
         }
     }
-    private static void open(){
-        try {
-            connection = DriverManager.getConnection(URL,NAME,PASSWORD);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
-    private static void close(){
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
 
 }
