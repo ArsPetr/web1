@@ -1,15 +1,14 @@
 package services;
 
 import models.News;
-import services.UserService;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class NewsDAO extends BDService{
+public class NewsService extends BDService{
     private static final String INSERT_NEWS = "INSERT INTO news (tags, header, body, image, author) values (?,?,?,?,?)";
     private static final String SELECT_NEWS = "SELECT * FROM news";
-    public NewsDAO(){}
+    public NewsService(){}
 
     public static void insert(News news){
         open();

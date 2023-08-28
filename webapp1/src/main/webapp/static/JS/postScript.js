@@ -43,6 +43,7 @@ document.getElementById("submit").addEventListener("click",function () {
             'Content-Type': 'multipart/form-data',
         },
         success: (response) => {
+            console.log(input);
             alert("success")
         },
     })

@@ -1,6 +1,6 @@
 package servlets;
 
-import services.NewsDAO;
+import services.NewsService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import models.News;
 import jakarta.servlet.ServletConfig;
@@ -41,7 +41,7 @@ public class NewsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ArrayList<News> newsArrayList = NewsDAO.getNews();
+        ArrayList<News> newsArrayList = NewsService.getNews();
 
         resp.setContentType("application/json");
         PrintWriter out = resp.getWriter();
@@ -60,21 +60,20 @@ public class NewsServlet extends HttpServlet {
         News news = null;
         String fileName = null;
         for (Part part : req.getParts()){
-            if (Objects.equals(part.getName(), "image")){
+            if (Objects.equals(part.getName(), "image") && part.getInputStream() != null){
                 fileName = UUID.randomUUID().toString() + part.getSubmittedFileName();
                 part.write(fileName);
             }
             if (Objects.equals(part.getName(), "inputs")){
                 ObjectMapper objectMapper = new ObjectMapper();
                 String body = inputStreamToString(part.getInputStream());
-
                 news = objectMapper.readValue(body, News.class);
-
             }
         }
-
-        news.setImage(PIC_PATH + fileName);
-        NewsDAO.insert(news);
+        if (fileName != null){
+            news.setImage(PIC_PATH + fileName);
+        }
+        NewsService.insert(news);
     }
     private static String inputStreamToString(InputStream inputStream) {
         Scanner scanner = new Scanner(inputStream, "UTF-8");

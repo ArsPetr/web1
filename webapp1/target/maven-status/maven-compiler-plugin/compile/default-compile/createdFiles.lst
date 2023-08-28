@@ -5,6 +5,8 @@ servlets\CabinetServlet.class
 servlets\LoginServlet.class
 servlets\NewsServlet.class
 models\User.class
+servlets\MetaServlet.class
+models\Meta.class
 servlets\MainServlet.class
 servlets\UserSessionServlet.class
 servlets\RegistrationServlet.class

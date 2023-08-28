@@ -12,6 +12,5 @@ public class FileManager {
 
 
         if (file.delete()) System.out.println("File deleted");
-
     }
 }

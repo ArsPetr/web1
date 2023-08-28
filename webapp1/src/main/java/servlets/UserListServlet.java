@@ -24,9 +24,7 @@ public class UserListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         req.getRequestDispatcher("/WEB-INF/public/userList.html").forward(req,resp);
-        log("1");
     }
 
     @Override

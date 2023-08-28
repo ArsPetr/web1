@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import models.User;
+import services.MetaService;
 import services.UserService;
 
 import java.io.IOException;
@@ -27,7 +28,6 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("WEB-INF/public/loginPage.html").forward(req,resp);
-        log("1");
     }
 
     @Override
@@ -42,6 +42,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("login",login);
             session.setAttribute("password",password);
             session.setAttribute("role",UserService.getUserRole(login));
+            MetaService.increaseVisitNumber();
             resp.sendRedirect("main");
         }
         else resp.sendRedirect("login");

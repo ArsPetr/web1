@@ -38,9 +38,7 @@ public class UserSessionServlet extends HttpServlet {
         user.setPassword(null);
         //user.setProfilePic(req.getSession().getAttribute("").toString());
         ObjectMapper objectMapper = new ObjectMapper();
-
         String json = objectMapper.writeValueAsString(user);
-        log(json);
 
         resp.setContentType("application/json");
         PrintWriter out = resp.getWriter();
